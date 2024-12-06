@@ -1,4 +1,4 @@
-from Days import Day3, Day4
+from Days import Day3, Day4, Day5
 from common.DayFetcher import DayFetcher
 
 
@@ -6,7 +6,8 @@ currentDay = Day4
 
 days = {
   3: Day3,
-  4: Day4
+  4: Day4,
+  5: Day5
 }
 
 class PART:
@@ -34,7 +35,9 @@ def Main(day, part, input_type):
   else:
     return days[day].part2(input)
 
-
 if __name__ == "__main__":
-  result = Main(4, PART.part2, INPUT_TYPE.real)
+  result = Main(5, PART.part2, INPUT_TYPE.real)
+
+  print()
+  print('------ RESULT ------')
   print(result)
