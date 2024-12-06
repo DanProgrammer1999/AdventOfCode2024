@@ -1,13 +1,40 @@
 from Days import Day3, Day4
-from common.DayFetcher import get_input_for_day
+from common.DayFetcher import DayFetcher
 
 
-CURRENT_DAY = Day4
+currentDay = Day4
 
+days = {
+  3: Day3,
+  4: Day4
+}
 
-def Main():
-  current_input = get_input_for_day(CURRENT_DAY)
-  print(CURRENT_DAY.part1(current_input))
+class PART:
+  part1 = "part1"
+  part2 = "part2"
+
+class INPUT_TYPE:
+  real = "real"
+  sample = "sample"
+
+  @staticmethod
+  def custom_sample(custom_name):
+    return f"{custom_name}"
+
+def Main(day, part, input_type):
+  fetcher = DayFetcher(day)
+
+  if input_type == INPUT_TYPE.real:
+    input = fetcher.get_input()
+  else:
+    input = fetcher.get_sample_input(input_type)
+  
+  if part == PART.part1:
+    return days[day].part1(input)
+  else:
+    return days[day].part2(input)
+
 
 if __name__ == "__main__":
-  Main()
+  result = Main(4, PART.part2, INPUT_TYPE.real)
+  print(result)

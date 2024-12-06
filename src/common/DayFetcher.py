@@ -1,10 +1,6 @@
-import os
-from typing import Callable, Generator
-
 import requests
 
-from SessionTokenStore import SessionTokenStore
-# import requests
+from common.SessionTokenStore import SessionTokenStore
 
 CACHE_LOCATION = "__inputs__"
 
@@ -37,3 +33,7 @@ class DayFetcher:
       with open(get_input_file_name(self.day), "w") as f:
         f.write(response.text)
       return response.text
+    
+  def get_sample_input(self, sample_file_name="sample"):
+    with open(f"{CACHE_LOCATION}/day{self.day}_{sample_file_name}.txt", "r") as f:
+      return f.read()
