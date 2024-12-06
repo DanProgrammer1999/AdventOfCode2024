@@ -1,6 +1,6 @@
 import re
 
-from common.utils import get_input_for_day
+from common.DayFetcher import get_input_for_day
 
 class Day3:
 
