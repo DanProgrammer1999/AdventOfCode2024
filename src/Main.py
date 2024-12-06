@@ -1,42 +1,43 @@
-from Days import Day3, Day4, Day5
+import time
 from common.DayFetcher import DayFetcher
+from Config import AllDays, InputTypes
 
+CURRENT_DAY = 3
+PART = 1
+INPUT_TYPE = InputTypes.real
 
-currentDay = Day4
+def debug_input(input):
+  pass
 
-days = {
-  3: Day3,
-  4: Day4,
-  5: Day5
-}
+def debug_result(result):
+  pass
 
-class PART:
-  part1 = "part1"
-  part2 = "part2"
+def Main():
+  fetcher = DayFetcher(CURRENT_DAY)
 
-class INPUT_TYPE:
-  real = "real"
-  sample = "sample"
-
-  @staticmethod
-  def custom_sample(custom_name):
-    return f"{custom_name}"
-
-def Main(day, part, input_type):
-  fetcher = DayFetcher(day)
-
-  if input_type == INPUT_TYPE.real:
+  if INPUT_TYPE == InputTypes.real:
     input = fetcher.get_input()
   else:
-    input = fetcher.get_sample_input(input_type)
+    input = fetcher.get_sample_input(INPUT_TYPE)
   
-  if part == PART.part1:
-    return days[day].part1(input)
+  debug_input(input)
+
+  start = time.time()
+  if PART == 1:
+    result = AllDays[CURRENT_DAY].part1(input)
   else:
-    return days[day].part2(input)
+    result = AllDays[CURRENT_DAY].part2(input)
+
+  end = time.time()
+
+  print(f"--- TIME: {end - start: .6f} ---")
+
+  debug_result(result)
+
+  return result
 
 if __name__ == "__main__":
-  result = Main(5, PART.part2, INPUT_TYPE.real)
+  result = Main()
 
   print()
   print('------ RESULT ------')

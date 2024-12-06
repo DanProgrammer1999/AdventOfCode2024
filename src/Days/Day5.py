@@ -44,6 +44,8 @@ def part1(input):
 
   rules_dict = build_rules_dict(rules)
 
+  res = 0
+
   for pages in page_updates:
     if validate_pages_follow_rules(pages, rules_dict):
       new = int(pages[(len(pages) - 1) // 2])
